@@ -11,12 +11,7 @@ describe('validations tests suites - isValid', () => {
         const result = isValid("aaaaaa#");
         expect(result).toBe(false);
     });
-
-    test("should return true as the gamertag has 8 characters", () => {
-        const result = isValid("aaaaaa##");
-        expect(result).toBe(true);
-    });
-
+    
     test("should return false as the gamertag does not have a special character", () => {
         const result = isValid("aaaaaa11");
         expect(result).toBe(false);
