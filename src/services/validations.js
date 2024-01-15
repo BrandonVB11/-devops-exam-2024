@@ -6,6 +6,7 @@ const isValid = (gamerTag) => {
     if (gamerTag.length < 8) {
         return false;
     }
+
     return true;
 };
 
