@@ -16,6 +16,11 @@ describe('validations tests suites - isValid', () => {
         const result = isValid("aaaaaa11");
         expect(result).toBe(false);
     });
+
+    test("should return false as the gamertag does not have a number", () => {
+        const result = isValid("aaaaaaa#");
+        expect(result).toBe(false);
+    });
     
 });
 
