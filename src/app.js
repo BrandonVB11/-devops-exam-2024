@@ -3,7 +3,6 @@ try {
     const { isValid } = require('./services/validations');
 
     const body = document.getElementById('body');
-
     const gamerTagInput = document.getElementById('gamerTagInput');
     const checkButton = document.getElementById('gamerTagCheckButton');
     const resetButton = document.getElementById('resetButton');
@@ -38,11 +37,20 @@ try {
 
     checkButton.addEventListener('click', () => {
         const validationResult = isValid(gamerTagValue);
-        // TODO : Define the correct error message regarding the validation rules
-        feedbackMessage.textContent = validationResult
-            ? 'Gamer tag is not valid'
-            : 'Gamer tag is valid';
-        // ----------------------------------------------------------------------
+        let errorMessage = '';
+
+        if (!validationResult) {
+            if (gamerTagValue.length < 8) {
+                errorMessage = 'Invalid - gamertag length must be at least 8 characters';
+            } else if (!/[&$!è§à_]/.test(gamerTagValue)) {
+                errorMessage = 'Invalid - gamertag must contain at least a special character';
+            } else if (!/\d/.test(gamerTagValue)) {
+                errorMessage = 'Invalid - gamertag must contain at least a number';
+            }
+        }
+
+        feedbackMessage.textContent = errorMessage || (validationResult ? 'Gamer tag is not valid' : 'Gamer tag is valid');
+
         body.setAttribute(
             'style',
             validationResult ? greenBackgroundColor : redBackgroundColor
