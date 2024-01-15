@@ -39,6 +39,14 @@ try {
     checkButton.addEventListener('click', () => {
         const validationResult = isValid(gamerTagValue);
         // TODO : Define the correct error message regarding the validation rules
+        //Le gamer tag doit contenir au moins 8 caractères
+        //Message : “Invalid - gamertag length must be at least 8
+        //characters”
+        if(validationResult){
+            feedbackMessage.textContent = 'Invalid - gamertag length must be at least 8 characters';
+        }else{
+            feedbackMessage.textContent = 'Valid';
+        }
         feedbackMessage.textContent = validationResult
             ? 'Gamer tag is not valid'
             : 'Gamer tag is valid';
