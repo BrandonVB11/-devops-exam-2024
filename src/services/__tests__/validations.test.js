@@ -6,4 +6,16 @@ describe('validations tests suites - isValid', () => {
         const result = isValid();
         expect(result).toBeDefined();
     });
+
+    test("should return false as the gamertag does not have 8 characters", () => {
+        const result = isValid("aaaaaa#");
+        expect(result).toBe(false);
+    });
+
+    test("should return true as the gamertag has 8 characters", () => {
+        const result = isValid("aaaaaa##");
+        expect(result).toBe(true);
+    });
+    
 });
+
