@@ -41,10 +41,13 @@ try {
 
         if (!validationResult) {
             if (gamerTagValue.length < 8) {
+                
                 errorMessage = 'Invalid - gamertag length must be at least 8 characters';
             } else if (!/[&$!è§à_]/.test(gamerTagValue)) {
+        
                 errorMessage = 'Invalid - gamertag must contain at least a special character';
             } else if (!/\d/.test(gamerTagValue)) {
+
                 errorMessage = 'Invalid - gamertag must contain at least a number';
             }
         }
