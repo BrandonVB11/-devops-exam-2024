@@ -4,35 +4,35 @@ on:
     push:
         branches:
             - main
-            pull_request:
-                types: [opened,edited]
+    pull_request:
+        types: [opened,edited]
 jobs:
     Explore-Github-Actions:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout 
-                uses: actions/checkout@v3
+              uses: actions/checkout@v3
 
             - name: Install dependencies
-                run: npm i
+              run: npm i
 
             - name: Start Pipeline
-                run: echo "Starting Pipeline at $(date)"
+              run: echo "Starting Pipeline at $(date)"
 
             - name: Format code with Prettier
-                run: npm run prettier:fix
+              run: npm run prettier:fix
 
-                - name: Lint code with ESLint
-                run: npm run lint:fix
+            - name: Lint code with ESLint
+              run: npm run lint:fix
 
             - name: Run tests with Jest
-                run: npm run test && npm run test:coverage
+              run: npm run test && npm run test:coverage
 
             - name: Build
-                run: npm run build
+              run: npm run build
 
             - name: End Pipeline
-                run: echo "Ending Pipeline at $(date)"
+              run: echo "Ending Pipeline at $(date)"
 
-                - name: Success message
-                    run: echo "Pipeline ran successfully at $(date)"
+            - name: Success message
+              run: echo "Pipeline ran successfully at $(date)"
